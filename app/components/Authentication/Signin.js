@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+
 import {
   View,
   Text,
@@ -12,8 +13,6 @@ import {
 import {useTheme} from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
 import LinearGradient from 'react-native-linear-gradient';
-import axios from 'axios';
-import {hostName} from '../../constants/constants';
 import {login} from '../../services/authService';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -22,16 +21,26 @@ const SigninPage = ({navigation}) => {
   const [password, setPassword] = useState('');
   const {colors} = useTheme();
 
-  const signIn = () => {
+  const signIn =  () => {
     login(email, password)
       .then((res) => {
-        // if ( res.data.role == 'admin') {
-        //   throw new Error('Cannot login');
-        // } else {
+
         AsyncStorage.setItem('userData', JSON.stringify(res.data.dbResult[0]));
-        AsyncStorage.setItem('userRole', res.data.role);
+        AsyncStorage.setItem('userRole', res.data.defaultRole);
+        console.log('res.data.token: '+res.data.token);
+        console.log('res.data.role: '+res.data.defaultRole);
+
+
         AsyncStorage.setItem('userToken', res.data.token);
-        // }
+        console.log(res.data.defaultRole);// find role of the combination of credentials and allow if role==customer
+        if (res.data.defaultRole === 'customer') {
+          navigation.navigate('DashboardDrawer');
+          console.log('successfully logged!');
+
+        } else {
+          console.log('User type not matched!');
+        }
+
       })
       .catch((err) => {
         console.log(err);
@@ -78,7 +87,8 @@ const SigninPage = ({navigation}) => {
           />
         </View>
 
-        <TouchableOpacity onPress={() => signIn()}>
+        <TouchableOpacity
+          onPress={() => signIn() }>
           <LinearGradient colors={['#730018', '#00085b']} style={styles.signIn}>
             <Text style={styles.textSign}>SIGN IN</Text>
           </LinearGradient>

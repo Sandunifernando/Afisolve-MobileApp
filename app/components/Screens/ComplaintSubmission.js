@@ -1,14 +1,37 @@
 import * as React from 'react';
-import {Button, View, Text, ScrollView, StyleSheet} from 'react-native';
+import {Button, View, Text, ScrollView, StyleSheet, data} from 'react-native';
 import {Appbar} from 'react-native-paper';
 import {TextInput, HelperText} from 'react-native-paper';
+import {useState } from 'react';
+import AsyncStorage from '@react-native-community/async-storage';
+import ProductPicker from './ProductPicker';
+
 
 const ComplaintSubmission = ({navigation}) => {
-  const [text, setText] = React.useState('');
-  const onChangeText = (text) => setText(text);
-  const hasErrors = () => {
-    return !text.includes('@');
-  };
+
+    const [productID , setproductID] = useState("")
+    const [description , setdescription] = useState("")
+
+
+
+    const complaintSubmit = async () => {
+        const token = await AsyncStorage.getItem('userToken');
+        console.log(token,'token eka');
+        fetch("http://10.0.2.2:3000/customer/lodge-complaint", {
+
+            method: "post",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authentication': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                productID,
+                description,
+            })
+
+        })
+
+    }
 
   return (
     <ScrollView>
@@ -19,31 +42,31 @@ const ComplaintSubmission = ({navigation}) => {
       </Appbar.Header>
       <Text>Plese Fill the following</Text>
       <View>
+       <ProductPicker/>
         <TextInput
+
           style={styles.PIDstyle}
           label="Product ID"
-          value={text}
-          onChangeText={onChangeText}
+          onChangeText = {(productID) => setproductID(productID)}
+
         />
-        <HelperText type="error" visible={hasErrors()}>
+        <HelperText type="error">
+          {/*<HelperText type="error" visible={hasErrors()}>*/}
           Product ID Required
         </HelperText>
       </View>
       <TextInput
         style={styles.PIDstyle}
         label="Subject"
-        value={text}
-        onChangeText={(text) => setText(text)}
       />
       <TextInput
         style={styles.PIDstyle}
         label="Description"
-        value={text}
-        onChangeText={(text) => setText(text)}
+        onChangeText = {(description) => setdescription(description)}
       />
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <Text>This is submittion</Text>
-        <Button onPress={() => navigation.goBack()} title="Go back home" />
+        <Button onPress={() => complaintSubmit()} title="Submit Complaint" />
       </View>
     </ScrollView>
   );
