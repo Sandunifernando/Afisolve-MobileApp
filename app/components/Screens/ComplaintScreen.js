@@ -3,11 +3,7 @@ import {Button, View, Text, StyleSheet} from 'react-native';
 import {Card} from 'react-native-paper';
 
 const ComplaintHistory = ({navigation}) => {
-  const _goBack = () => console.log('Went back');
 
-  const _handleSearch = () => console.log('Searching');
-
-  const _handleMore = () => console.log('Shown more');
   return (
     <View style={{flex: 1}}>
       <Card style={styles.maincard}>
@@ -49,10 +45,10 @@ const ComplaintHistory = ({navigation}) => {
         />
       </Card>
 
-      {/*<Button*/}
-      {/*  onPress={() => navigation.navigate('Notifications')}*/}
-      {/*  title="Go to notifications"*/}
-      {/*/>*/}
+      <Button
+        onPress={() => navigation.navigate('Notifications')}
+        title="Go to notifications"
+      />
     </View>
   );
 };

@@ -4,12 +4,9 @@ import {Card, Button} from 'react-native-paper';
 import {Appbar} from 'react-native-paper';
 import {ScrollView} from 'react-native';
 
+
 const DashboardPage = ({navigation}) => {
-  const _goBack = () => console.log('Went back');
 
-  const _handleSearch = () => console.log('Searching');
-
-  const _handleMore = () => console.log('Shown more');
   return (
     <ScrollView>
       {/*<Appbar.Header>*/}
@@ -29,9 +26,10 @@ const DashboardPage = ({navigation}) => {
 
         <Card style={styles.maincard}>
           <Text style={styles.cardtitle}> My Purchases </Text>
+
           <Button
             mode="contained"
-            onPress={() => navigation.navigate('MypurchaseSceen')}>
+            onPress={() => navigation.navigate('MyPurchase')}>
             View Store
           </Button>
         </Card>

@@ -1,22 +1,28 @@
 import * as React from 'react';
-import {Button, View, Text, ScrollView, StyleSheet, data} from 'react-native';
+import {Button, View, Text, ScrollView, StyleSheet, Alert} from 'react-native';
 import {Appbar} from 'react-native-paper';
 import {TextInput, HelperText} from 'react-native-paper';
-import {useState } from 'react';
+import {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 import ProductPicker from './ProductPicker';
 
 
 const ComplaintSubmission = ({navigation}) => {
 
-    const [productID , setproductID] = useState("")
-    const [description , setdescription] = useState("")
+    const [productID , setproductID] = useState('');
+    const [description , setdescription] = useState('');
+    const [token, setToken] = useState('');
+    // const [token, setToken] = useState('initial state');
 
 
-
-    const complaintSubmit = async () => {
+    const saveToken = async () => {
         const token = await AsyncStorage.getItem('userToken');
-        console.log(token,'token eka');
+        console.log('token from storage', token);
+        setToken(token);
+    }
+
+    useEffect(() => {
+        saveToken();
         fetch("http://10.0.2.2:3000/customer/lodge-complaint", {
 
             method: "post",
@@ -31,18 +37,53 @@ const ComplaintSubmission = ({navigation}) => {
 
         })
 
+    }, []);
+
+    // const complaintSubmit = async () => {
+        // const token = await AsyncStorage.getItem('userToken');
+        // setToken(token);
+        // console.log(token,'____TOKEN FROM COMPLAINT SUBMISSION____');
+        // fetch("http://10.0.2.2:3000/customer/lodge-complaint", {
+        //
+        //     method: "post",
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'Authentication': `Bearer ${token}`
+        //     },
+        //     body: JSON.stringify({
+        //         productID,
+        //         description,
+        //     })
+        //
+        // })
+
+    // }
+    const openAlert = () => {
+        Alert.alert(
+            "Complaint Successfully Submitted",
+            "We review it as soon as possible. Thank you for reaching for us!",
+            [{
+                text: "OK",
+                onPress : () => navigation.navigate("DashboardDrawer" ),
+
+            }]
+
+
+        );
     }
 
   return (
     <ScrollView>
       <Appbar.Header>
-        <Appbar.BackAction onPress={() => navigation.openDrawer()} />
+        <Appbar.BackAction onPress={() => navigation.goBack()} />
         <Appbar.Content title="Submit Complaint" />
         <Appbar.Action icon="magnify" onPress={() => navigation.openDrawer()} />
       </Appbar.Header>
       <Text>Plese Fill the following</Text>
       <View>
-       <ProductPicker/>
+          {console.log('renderer token', token)}
+       <ProductPicker />
+
         <TextInput
 
           style={styles.PIDstyle}
@@ -66,7 +107,7 @@ const ComplaintSubmission = ({navigation}) => {
       />
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <Text>This is submittion</Text>
-        <Button onPress={() => complaintSubmit()} title="Submit Complaint" />
+        <Button onPress={() => openAlert()} title="Submit Complaint" />
       </View>
     </ScrollView>
   );

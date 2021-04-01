@@ -1,25 +1,4 @@
 import * as React from 'react';
-
-import {createNativeStackNavigator} from 'react-native-screens/native-stack';
-
-// export default function HomeScreen(navigation) {
-//   return (
-//     <View
-//       style={{
-//         // backgroundColor: '#000000',
-//         flex: 1,
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//       }}>
-//       <Text>this is welcome page</Text>
-//       <Button
-//         onPress={() => navigation.navigate('Signin', {name: 'Signin'})}
-//         title="Go to Sign in page"
-//       />
-//     </View>
-//   );
-// }
-
 import {
   View,
   Text,
@@ -31,7 +10,6 @@ import {
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import LinearGradient from 'react-native-linear-gradient';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {useTheme} from '@react-navigation/native';
 
 const HomeScreen = ({navigation}) => {

@@ -53,7 +53,9 @@ const MainTabNavigator = () => {
       />
 
       <Tab.Screen
-        name="SubmitComplaint"
+        name="Submit_Complaint"
+        // name="SubmitComplaint" --- kalin thibba eka wenas karanna kalin
+
         component={ComplaintStackScreen}
         options={{
           tabBarLabel: 'History',
