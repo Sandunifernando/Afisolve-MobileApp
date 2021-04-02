@@ -8,8 +8,7 @@ const ProductPicker = ({token}) => {
     const [selectedValue, setSelectedValue] = useState('');
     const [productDetails , setproductDetails] = useState([]);
 
-    // AsyncStorage.setItem('selectedProduct', selectedValue);
-    // console.log(selectedValue, 'selectedProduct');
+
 
         console.log(token, '____TOKEN FROM PRODUCT PICKER____'); //async eka athule thiyeddi awa
         console.log(selectedValue, '____PRODUCT NAME FROM PRODUCT PICKER____');

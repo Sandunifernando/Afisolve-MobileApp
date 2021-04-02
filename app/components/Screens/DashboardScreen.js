@@ -38,7 +38,7 @@ const DashboardPage = ({navigation}) => {
           <Button
             mode="contained"
             onPress={() => navigation.navigate('SubmitComplaint')}>
-            View Complaint
+            Submit Complaint
           </Button>
         </Card>
         <Card style={styles.maincard}>
