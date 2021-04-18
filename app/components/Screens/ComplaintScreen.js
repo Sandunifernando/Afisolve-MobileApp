@@ -1,79 +1,35 @@
 import * as React from 'react';
-import {Button, View, Text, StyleSheet} from 'react-native';
-import {Card} from 'react-native-paper';
+import { DataTable } from 'react-native-paper';
 
-const ComplaintHistory = ({navigation}) => {
+const ComplaintHistory = ({navigation}) => (
+    <DataTable>
+      <DataTable.Header>
+        <DataTable.Title>Product</DataTable.Title>
+        <DataTable.Title numeric>Description</DataTable.Title>
+        <DataTable.Title numeric>Action</DataTable.Title>
+      </DataTable.Header>
 
-  return (
-    <View style={{flex: 1}}>
-      <Card style={styles.maincard}>
-        <Text>Complaint ID : 456AB</Text>
+      <DataTable.Row>
+        <DataTable.Cell>e-School</DataTable.Cell>
+        <DataTable.Cell numeric>Error on front</DataTable.Cell>
+        <DataTable.Cell numeric>GO</DataTable.Cell>
+      </DataTable.Row>
 
-        <Button
-          style={styles.buttonContainer}
-          color="blue"
-          title="Pending"
-          onPress={() => {}}
-        />
-        <Button
-          style={styles.buttonContainer}
-          color="red"
-          title="Open Complaint"
-          onPress={() => {}}
-        />
-      </Card>
-      <Card style={styles.maincard}>
-        <Text>Complaint ID : 456AB</Text>
+      <DataTable.Row>
+        <DataTable.Cell>Insta-App</DataTable.Cell>
+        <DataTable.Cell numeric>Report on time</DataTable.Cell>
+        <DataTable.Cell numeric>GO</DataTable.Cell>
+      </DataTable.Row>
 
-        <Button
-          style={styles.buttonContainer}
-          color="green"
-          title="Completed"
-          onPress={() => {}}
-        />
-        <Button
-          style={styles.buttonContainer}
-          color=""
-          title="Not Satisfy?"
-          onPress={() => {}}
-        />
-        <Button
-          style={styles.buttonContainer}
-          color=""
-          title="Rate US"
-          onPress={() => {}}
-        />
-      </Card>
-
-      <Button
-        onPress={() => navigation.navigate('Notifications')}
-        title="Go to notifications"
+      <DataTable.Pagination
+          page={1}
+          numberOfPages={3}
+          onPageChange={page => {
+            console.log(page);
+          }}
+          label="1-2 of 6"
       />
-    </View>
-  );
-};
+    </DataTable>
+);
+
 export default ComplaintHistory;
-
-const styles = StyleSheet.create({
-  maincard: {
-    padding: 20,
-    margin: 10,
-    height: 150,
-    backgroundColor: '#ffffff',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 110,
-    },
-    shadowOpacity: 1,
-    shadowRadius: 16,
-
-    elevation: 12,
-  },
-  buttonContainer: {
-    alignItems: 'center',
-    marginVertical: 50,
-    width: 3,
-    marginTop: 3,
-  },
-});

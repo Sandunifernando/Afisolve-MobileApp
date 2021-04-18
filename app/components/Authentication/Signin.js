@@ -7,7 +7,7 @@ import {
   TextInput,
   StyleSheet,
   StatusBar,
-  Dimensions,
+  Dimensions, Alert,
 } from 'react-native';
 
 import {useTheme} from '@react-navigation/native';
@@ -39,11 +39,20 @@ const SigninPage = ({navigation}) => {
 
         } else {
           console.log('User type not matched!');
+
         }
 
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
+        console.log('invalid login');
+        Alert.alert(
+            "Login Error! ",
+            "Invalid login, Your Password or Username did not match! \nPlease try again ",
+            [{
+              text: "OK",
+              onPress : () => navigation.navigate("Signin" ),
+            }]
+        )
       });
   };
 

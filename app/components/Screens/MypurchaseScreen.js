@@ -1,12 +1,11 @@
 import * as React from 'react';
-import {Dimensions, StyleSheet, View, FlatList, ScrollView} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import {Card, Button, Text} from 'react-native-paper';
+import {Dimensions, StyleSheet, View, FlatList, ScrollView, TouchableOpacity} from 'react-native';
 import {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 import ProductCard from './ProductCard';
+import {hostName} from '../../constants/constants';
 
-const MypurchaseSceen = ({navigation}) => {
+const MypurchaseSceen = () => {
   const [productDetails , setproductDetails] = useState([]);
   console.log('productDetails Array',productDetails);
 
@@ -17,9 +16,9 @@ const MypurchaseSceen = ({navigation}) => {
 
   const getProductDetails = async () => {
     const token = await AsyncStorage.getItem('userToken');
-    console.log('token from storage', token);
 
-    fetch("http://10.0.2.2:3000/customer/get-all-products", {
+
+    fetch(hostName +"/customer/get-all-products", {
 
       method: "post",
       headers: {
@@ -32,24 +31,21 @@ const MypurchaseSceen = ({navigation}) => {
         .catch((error) => console.error(error))
 
   };
-//----------------
-// if(!productDetails){
-//   return null
-// }
-//  If there is an empty array try this, it will occur may be due to initiate the empty array in setproductDetails()
-//-----------------
 
 
   return (
-      <ScrollView>
+      <View>
           <FlatList data={productDetails.data}
                     keyExtractor={( item ,index) => 'key' + index}
                     renderItem={({item}) => {
-                      return <ProductCard item = {item}/>
+                      return (
+                          <ProductCard item = {item}/>
+
+                          )
                     }} />
-        <Button style={styles.Button} onPress={() => navigation.goBack()} title="Go back home" />
-        {/*<ProductCard/>*/}
-      </ScrollView>
+
+
+      </View>
   );
 };
 export default MypurchaseSceen;
@@ -58,7 +54,20 @@ const styles =StyleSheet.create({
 
   Button:{
     backgroundColor: '#344569'
-  }
+  },
+
+  // signIn: {
+  //   width: 150,
+  //   height: 40,
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  //   borderRadius: 50,
+  //   flexDirection: 'row',
+  // },
+  // textSign: {
+  //   color: 'white',
+  //   fontWeight: 'bold',
+  // },
 
 
 });

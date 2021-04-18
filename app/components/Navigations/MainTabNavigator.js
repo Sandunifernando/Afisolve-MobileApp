@@ -19,7 +19,7 @@ const MainTabNavigator = () => {
   return (
     <Tab.Navigator
       initialRouteName="Dashboard"
-      activeColor="#1a53ff"
+      activeColor="#1a59ff"
       barStyle={{backgroundColor: '#0c0837'}}>
       <Tab.Screen
         name="Dashboard"
