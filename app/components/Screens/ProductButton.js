@@ -11,7 +11,7 @@ const ProductButton = () => {
         <View>
 
 
-                <TouchableOpacity  onPress={() => navigation.navigate('SubmitComplaint')}>
+                <TouchableOpacity  onPress={() => navigation.navigate('Lodge Complaint')}>
                     <LinearGradient
                         colors={['#3263f8', '#00055b']}
                         style={styles.signIn}>

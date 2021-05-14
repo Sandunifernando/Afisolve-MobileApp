@@ -39,6 +39,14 @@ const SigninPage = ({navigation}) => {
 
         } else {
           console.log('User type not matched!');
+          Alert.alert(
+              "Login Error! ",
+              "Invalid login, Your Password or Username did not match! \nPlease try again ",
+              [{
+                text: "OK",
+                onPress : () => navigation.navigate("Signin" ),
+              }]
+          )
 
         }
 

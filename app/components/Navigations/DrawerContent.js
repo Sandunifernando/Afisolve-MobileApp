@@ -58,26 +58,26 @@ export function DrawerContent(props) {
 
                     <Drawer.Section style={styles.drawerSection}>
                         <DrawerItem
-                            icon={({color, size}) => (
-                                <Icon
-                                    name="home-outline"
-                                    color={color}
-                                    size={size}
-                                />
-                            )}
+                            // icon={({color, size}) => (
+                            //     <Icon
+                            //         name="home-outline"
+                            //         color={color}
+                            //         size={size}
+                            //     />
+                            // )}
                             label="Home"
                             onPress={() => {props.navigation.navigate('Home')}}
                         />
                         <DrawerItem
-                            icon={({color, size}) => (
-                                <Icon
-                                    name="account-outline"
-                                    color={color}
-                                    size={size}
-                                />
-                            )}
-                            label="Profile"
-                            onPress={() => {props.navigation.navigate('Profile')}}
+                            // icon={({color, size}) => (
+                            //     <Icon
+                            //         name="account-outline"
+                            //         color={color}
+                            //         size={size}
+                            //     />
+                            // )}
+                            label="My Purchase"
+                            onPress={() => {props.navigation.navigate('My Purchase')}}
                         />
                         {/*<DrawerItem*/}
                         {/*    icon={({color, size}) => (*/}
@@ -91,26 +91,26 @@ export function DrawerContent(props) {
                         {/*    onPress={() => {props.navigation.navigate('BookmarkScreen')}}*/}
                         {/*/>*/}
                         <DrawerItem
-                            icon={({color, size}) => (
-                                <Icon
-                                    name="settings-outline"
-                                    color={color}
-                                    size={size}
-                                />
-                            )}
+                            // icon={({color, size}) => (
+                            //     <Icon
+                            //         name="settings-outline"
+                            //         color={color}
+                            //         size={size}
+                            //     />
+                            // )}
                             label="Notification"
                             onPress={() => {navigation.navigate('Notifications')}}
                         />
                         <DrawerItem
-                            icon={({color, size}) => (
-                                <Icon
-                                    name="account-check-outline"
-                                    color={color}
-                                    size={size}
-                                />
-                            )}
-                            label="SubmitComplaint"
-                            onPress={() => {props.navigation.navigate('SubmitComplaint')}}
+                            // icon={({color, size}) => (
+                            //     <Icon
+                            //         name="account-check-outline"
+                            //         color={color}
+                            //         size={size}
+                            //     />
+                            // )}
+                            label="Lodge Complaint"
+                            onPress={() => {props.navigation.navigate('Lodge Complaint')}}
                         />
                     </Drawer.Section>
                     {/*<Drawer.Section title="Preferences">*/}
