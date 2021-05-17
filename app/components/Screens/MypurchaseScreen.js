@@ -7,7 +7,7 @@ import {hostName} from '../../constants/constants';
 
 const MypurchaseSceen = () => {
   const [productDetails , setproductDetails] = useState([]);
-  console.log('productDetails Array',productDetails);
+
 
   useEffect(() => {
     getProductDetails();
