@@ -21,11 +21,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 
 export function DrawerContent(props) {
-
-    // const paperTheme = useTheme();
-
-
-
     return(
         <View style={{flex:1}}>
             <DrawerContentScrollView >

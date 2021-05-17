@@ -88,7 +88,7 @@ const SigninPage = ({navigation}) => {
         <View style={styles.inputView}>
           <TextInput
             style={styles.TextInput}
-            placeholder="Email"
+            placeholder="c@gmail.com"
             placeholderTextColor="white"
             onChangeText={(email) => setEmail(email)}
           />
@@ -97,7 +97,7 @@ const SigninPage = ({navigation}) => {
         <View style={styles.inputView}>
           <TextInput
             style={styles.TextInput}
-            placeholder="Password"
+            placeholder="123"
             placeholderTextColor="white"
             secureTextEntry={true}
             onChangeText={(password) => setPassword(password)}

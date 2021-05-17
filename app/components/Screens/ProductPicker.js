@@ -5,7 +5,6 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {hostName} from '../../constants/constants';
 
 const ProductPicker = ({productID, setproductID}) => {
-
     const [productDetails, setproductDetails] = useState([]);
 
 

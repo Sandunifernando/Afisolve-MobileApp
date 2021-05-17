@@ -1,35 +1,28 @@
 import * as React from 'react';
-import { DataTable } from 'react-native-paper';
+import NotificationsScreen from './NotificationScreen';
+import HomeScreen from '../Authentication/HomeScreen';
+import NavigationContainer from '@react-navigation/native/src/NavigationContainer';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import {View} from 'react-native';
+import Text from 'react-native-paper';
+import PendingComplaintScreen from './PendingComplaintScreen';
+import InProgressComplaintScreen from './InProgressComplaintScreen';
+import ClosedComplaintScreen from './ClosedComplaintScreen';
+import FinishedComplaintScreen from './FinishedComplaintScreen';
 
-const ComplaintHistory = ({navigation}) => (
-    <DataTable>
-      <DataTable.Header>
-        <DataTable.Title>Product</DataTable.Title>
-        <DataTable.Title numeric>Description</DataTable.Title>
-        <DataTable.Title numeric>Action</DataTable.Title>
-      </DataTable.Header>
 
-      <DataTable.Row>
-        <DataTable.Cell>e-School</DataTable.Cell>
-        <DataTable.Cell numeric>Error on front</DataTable.Cell>
-        <DataTable.Cell numeric>GO</DataTable.Cell>
-      </DataTable.Row>
+const Tab = createMaterialTopTabNavigator();
+const ComplaintHistory = () => {
+    return (
 
-      <DataTable.Row>
-        <DataTable.Cell>Insta-App</DataTable.Cell>
-        <DataTable.Cell numeric>Report on time</DataTable.Cell>
-        <DataTable.Cell numeric>GO</DataTable.Cell>
-      </DataTable.Row>
+        <Tab.Navigator>
+            <Tab.Screen name="Pending " component={PendingComplaintScreen}/>
+            <Tab.Screen name="In-Progress " component={InProgressComplaintScreen}/>
+            <Tab.Screen name="Closed " component={ClosedComplaintScreen}/>
+            <Tab.Screen name="Finished " component={FinishedComplaintScreen}/>
+        </Tab.Navigator>
 
-      <DataTable.Pagination
-          page={1}
-          numberOfPages={3}
-          onPageChange={page => {
-            console.log(page);
-          }}
-          label="1-2 of 6"
-      />
-    </DataTable>
-);
+    );
+};
 
 export default ComplaintHistory;
