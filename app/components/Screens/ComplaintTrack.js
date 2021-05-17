@@ -9,6 +9,7 @@ import PendingComplaintScreen from './PendingComplaintScreen';
 import InProgressComplaintScreen from './InProgressComplaintScreen';
 import ClosedComplaintScreen from './ClosedComplaintScreen';
 import FinishedComplaintScreen from './FinishedComplaintScreen';
+import pendingEx from './pendingEx';
 
 
 const Tab = createMaterialTopTabNavigator();
@@ -16,7 +17,7 @@ const ComplaintTrackSceen  = () => {
     return (
 
         <Tab.Navigator>
-            <Tab.Screen name="Pending " component={PendingComplaintScreen}/>
+            <Tab.Screen name="Pending" component={PendingComplaintScreen}/>
             <Tab.Screen name="In-Progress " component={InProgressComplaintScreen}/>
             <Tab.Screen name="Closed " component={ClosedComplaintScreen}/>
             <Tab.Screen name="Finished " component={FinishedComplaintScreen}/>

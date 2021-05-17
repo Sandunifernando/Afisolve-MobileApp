@@ -31,10 +31,11 @@ const MypurchaseSceen = () => {
         .catch((error) => console.error(error))
 
   };
-
+    console.log(productDetails.data);
 
   return (
       <View>
+
           <FlatList data={productDetails.data}
                     keyExtractor={( item ,index) => 'key' + index}
                     renderItem={({item}) => {
