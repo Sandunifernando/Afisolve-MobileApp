@@ -33,8 +33,8 @@ const ClosedComplaintCard =  ({item} )=> {
                             style={styles.SatisfiedButton}
                             onPress={() =>
                                 Alert.alert(
-                                "You Seem to be not satisfied! ",
-                                "You can re-lodge the issue still you are facing! \n We reach your issue as soon as possible. ",
+                                "You Seem to be satisfied! ",
+                                "Your Feedback on our satisfication with our service is greatly appreciated! \n Please Rate our service. ",
                                 [
 
                             {
@@ -43,7 +43,9 @@ const ClosedComplaintCard =  ({item} )=> {
                                 style: "cancel"
                             },
 
-                            { text: "Loadge Sub-Complaint", onPress: () => navigation.navigate("Signin" ) }
+                            { text: "Give Feedback", onPress: () => navigation.navigate("Feedback", {
+                                    paramKey: item.complaintID,
+                                } ) }
                                 ]
                                 )}
                                 >
