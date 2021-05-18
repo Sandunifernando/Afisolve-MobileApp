@@ -2,10 +2,11 @@ import * as React from 'react';
 import {View, FlatList} from 'react-native';
 import {useState,useEffect} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
-import ComplaintCard from './ComplaintCard';
+import PendingComplaintCard from './PendingComplaintCard';
 
 
-const ClosedComplaintScreen= () => {
+
+const PendingComplaintScreen= () => {
     const [complaintDetails, setcomplaintDetails] = useState('');
 
     useEffect(() => {
@@ -22,27 +23,27 @@ const ClosedComplaintScreen= () => {
                 'Authentication': `Bearer ${token}`
             },
             body: JSON.stringify({
-                statusID: 2,
+                statusID: 0,
             })
         })
             .then((response) => response.json())
             .then((json) => setcomplaintDetails(json))
             .catch((error) => console.error(error))
+         };
+// console.log(complaintDetails.data);
+        return (
+            <View>
+                <FlatList data={complaintDetails.data}
+                          keyExtractor={( item ,index) => 'key' + index}
+                          renderItem={({item}) => {
+                              return (
+                                  <PendingComplaintCard item = {item}/>
+                              )
+                          }} />
+            </View>
+        );
     };
-    console.log(complaintDetails.data);
-    return (
-        <View>
-            <FlatList data={complaintDetails.data}
-                      keyExtractor={( item ,index) => 'key' + index}
-                      renderItem={({item}) => {
-                          return (
-                              <ComplaintCard item = {item}/>
-                          )
-                      }} />
-        </View>
-    );
-};
-export default ClosedComplaintScreen;
+export default PendingComplaintScreen;
 
 
 

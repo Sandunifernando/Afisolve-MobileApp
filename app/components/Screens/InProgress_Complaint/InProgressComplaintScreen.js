@@ -2,10 +2,10 @@ import * as React from 'react';
 import {View, FlatList} from 'react-native';
 import {useState,useEffect} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
-import ComplaintCard from './ComplaintCard';
+import InProgressComplaintCard from './InProgressComplaintCard';
 
 
-const PendingComplaintScreen= () => {
+const InProgressComplaintScreen= () => {
     const [complaintDetails, setcomplaintDetails] = useState('');
 
     useEffect(() => {
@@ -22,27 +22,28 @@ const PendingComplaintScreen= () => {
                 'Authentication': `Bearer ${token}`
             },
             body: JSON.stringify({
-                statusID: 0,
+                statusID: 1,
             })
         })
             .then((response) => response.json())
             .then((json) => setcomplaintDetails(json))
             .catch((error) => console.error(error))
-         };
-console.log(complaintDetails.data);
-        return (
-            <View>
-                <FlatList data={complaintDetails.data}
-                          keyExtractor={( item ,index) => 'key' + index}
-                          renderItem={({item}) => {
-                              return (
-                                  <ComplaintCard item = {item}/>
-                              )
-                          }} />
-            </View>
-        );
     };
-export default PendingComplaintScreen;
+    console.log('*******' + complaintDetails.data);
+
+    return (
+        <View>
+            <FlatList data={complaintDetails.data}
+                      keyExtractor={( item ,index) => 'key' + index}
+                      renderItem={({item}) => {
+                          return (
+                              <InProgressComplaintCard item = {item}/>
+                          )
+                      }} />
+        </View>
+    );
+};
+export default InProgressComplaintScreen;
 
 
 

@@ -45,7 +45,7 @@ const DashboardPage = ({navigation}) => {
           <Text style={styles.cardtitle}> Track Complaints</Text>
           <Button
             mode="contained"
-            onPress={() => navigation.navigate('SubmitComplaint')}>
+            onPress={() => navigation.navigate('Complaint Track')}>
             Track Complaint
           </Button>
           {/*</Button>*/}
@@ -54,7 +54,7 @@ const DashboardPage = ({navigation}) => {
           <Text style={styles.cardtitle}> History </Text>
           <Button
             mode="contained"
-            onPress={() => navigation.navigate('SubmitComplaint')}>
+            onPress={() => navigation.navigate('Complaint Track')}>
             View History
           </Button>
         </Card>

@@ -1,17 +1,16 @@
 import * as React from 'react';
-import NotificationsScreen from './NotificationScreen';
-import HomeScreen from '../Authentication/HomeScreen';
-import NavigationContainer from '@react-navigation/native/src/NavigationContainer';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import {View} from 'react-native';
-import Text from 'react-native-paper';
-import PendingComplaintScreen from './PendingComplaintScreen';
-import InProgressComplaintScreen from './InProgressComplaintScreen';
-import ClosedComplaintScreen from './ClosedComplaintScreen';
-import FinishedComplaintScreen from './FinishedComplaintScreen';
-import pendingEx from './pendingEx';
+import {createStackNavigator} from '@react-navigation/stack';
 
 
+import InProgressComplaintScreen from './InProgress_Complaint/InProgressComplaintScreen';
+import ClosedComplaintScreen from './Closed_Complaints/ClosedComplaintScreen';
+import FinishedComplaintScreen from './Finished_Complaints/FinishedComplaintScreen';
+import PendingComplaintScreen from './Pending_Complaints/PendingComplaintScreen';
+import Icon from 'react-native-vector-icons/Ionicons';
+import FeedbackScreen from './Closed_Complaints/FeedbackScreen';
+
+const ColosedComplaintStack = createStackNavigator();
 const Tab = createMaterialTopTabNavigator();
 const ComplaintTrackSceen  = () => {
     return (
@@ -19,7 +18,7 @@ const ComplaintTrackSceen  = () => {
         <Tab.Navigator>
             <Tab.Screen name="Pending" component={PendingComplaintScreen}/>
             <Tab.Screen name="In-Progress " component={InProgressComplaintScreen}/>
-            <Tab.Screen name="Closed " component={ClosedComplaintScreen}/>
+            <Tab.Screen name="Closed " component={ColosedComplaintStackScreen }/>
             <Tab.Screen name="Finished " component={FinishedComplaintScreen}/>
         </Tab.Navigator>
 
@@ -27,3 +26,24 @@ const ComplaintTrackSceen  = () => {
 };
 
 export default ComplaintTrackSceen ;
+
+const ColosedComplaintStackScreen = ({navigation}) => (
+     <ColosedComplaintStack.Navigator>
+        <ColosedComplaintStack.Screen
+name={' '}
+            component={ClosedComplaintScreen}
+
+        />
+         <ColosedComplaintStack.Screen
+             name="Feedback"
+             component={FeedbackScreen}
+             options={{
+                 headerTintColor: 'black',
+                 headerTitleStyle: {
+                     fontWeight: 'bold',
+                 },
+
+             }}
+         />
+    </ColosedComplaintStack.Navigator>
+);

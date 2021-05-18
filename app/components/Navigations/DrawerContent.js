@@ -107,7 +107,27 @@ export function DrawerContent(props) {
                             label="Lodge Complaint"
                             onPress={() => {props.navigation.navigate('Lodge Complaint')}}
                         />
-                    </Drawer.Section>
+
+
+
+                    <DrawerItem
+                        label="Lodge Complaint"
+                        onPress={() => {props.navigation.navigate('Lodge Complaint')}}
+                    />
+
+
+
+                <DrawerItem
+                    label="Feedback"
+                    onPress={() => {props.navigation.navigate('FeedBack')}}
+                />
+
+
+            <DrawerItem
+                label="Sign Out"
+                onPress={() => {props.navigation.navigate('Home')}}
+            />
+        </Drawer.Section>
                     {/*<Drawer.Section title="Preferences">*/}
                     {/*    <TouchableRipple onPress={() => {toggleTheme()}}>*/}
                     {/*        <View style={styles.preference}>*/}

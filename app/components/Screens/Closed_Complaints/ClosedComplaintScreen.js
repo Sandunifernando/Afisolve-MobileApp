@@ -2,10 +2,9 @@ import * as React from 'react';
 import {View, FlatList} from 'react-native';
 import {useState,useEffect} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
-import ComplaintCard from './ComplaintCard';
+import ClosedComplaintCard from './ClosedComplaintCard';
 
-
-const  FinishedComplaintScreen= () => {
+const ClosedComplaintScreen= () => {
     const [complaintDetails, setcomplaintDetails] = useState('');
 
     useEffect(() => {
@@ -22,7 +21,7 @@ const  FinishedComplaintScreen= () => {
                 'Authentication': `Bearer ${token}`
             },
             body: JSON.stringify({
-                statusID: 3,
+                statusID: 2,
             })
         })
             .then((response) => response.json())
@@ -30,19 +29,21 @@ const  FinishedComplaintScreen= () => {
             .catch((error) => console.error(error))
     };
     console.log(complaintDetails.data);
+
     return (
         <View>
             <FlatList data={complaintDetails.data}
                       keyExtractor={( item ,index) => 'key' + index}
                       renderItem={({item}) => {
                           return (
-                              <ComplaintCard item = {item}/>
+                              <ClosedComplaintCard item ={item} />
+
                           )
                       }} />
         </View>
     );
 };
-export default FinishedComplaintScreen;
+export default ClosedComplaintScreen;
 
 
 

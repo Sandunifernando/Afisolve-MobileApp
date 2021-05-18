@@ -2,10 +2,10 @@ import * as React from 'react';
 import {View, FlatList} from 'react-native';
 import {useState,useEffect} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
-import ComplaintCard from './ComplaintCard';
+import FinishedComplaintCard from './FinishedComplaintCard';
 
 
-const InProgressComplaintScreen= () => {
+const  FinishedComplaintScreen= () => {
     const [complaintDetails, setcomplaintDetails] = useState('');
 
     useEffect(() => {
@@ -22,7 +22,7 @@ const InProgressComplaintScreen= () => {
                 'Authentication': `Bearer ${token}`
             },
             body: JSON.stringify({
-                statusID: 1,
+                statusID: 3,
             })
         })
             .then((response) => response.json())
@@ -36,13 +36,13 @@ const InProgressComplaintScreen= () => {
                       keyExtractor={( item ,index) => 'key' + index}
                       renderItem={({item}) => {
                           return (
-                              <ComplaintCard item = {item}/>
+                              <FinishedComplaintCard item = {item}/>
                           )
                       }} />
         </View>
     );
 };
-export default InProgressComplaintScreen;
+export default FinishedComplaintScreen;
 
 
 
