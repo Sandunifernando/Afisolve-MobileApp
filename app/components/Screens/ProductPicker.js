@@ -3,6 +3,7 @@ import {View, StyleSheet} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import AsyncStorage from '@react-native-community/async-storage';
 import {hostName} from '../../constants/constants';
+import {PickerItem} from 'react-native/Libraries/Components/Picker/Picker';
 
 const ProductPicker = ({productID, setproductID}) => {
     const [productDetails, setproductDetails] = useState([]);
@@ -36,7 +37,8 @@ const ProductPicker = ({productID, setproductID}) => {
 
                 <Picker
                     selectedValue={productID}
-                    style={{height: 40, width: 150}}
+                    style={{height: 40, width: 150, justifyContent:'center'}}
+                    itemStyle={{ backgroundColor: "grey", color: "blue", fontFamily:"Ebrima", fontSize:17 }}
                     onValueChange={(itemValue, itemIndex) => {
                         setproductID(itemValue);
                     }}
@@ -59,9 +61,15 @@ const ProductPicker = ({productID, setproductID}) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 40,
-        alignItems: 'center',
-
+        padding :10,
+        width:150,
+marginLeft : 120,
+        marginTop:50,
+        borderWidth: 2,
+justifyContent:'center',
+       alignContent:'center',
+        borderColor: '#0337c3',
+        borderRadius: 4
     },
 
 });

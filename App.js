@@ -11,7 +11,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
 import HomeScreen from './app/components/Authentication/HomeScreen';
 import SigninPage from './app/components/Authentication/Signin';
-import NotificationsScreen from './app/components/Screens/NotificationScreen';
+import ProfileScreen from './app/components/Screens/ProfileScreen';
 import ComplaintSubmission from './app/components/Screens/ComplaintSubmission';
 import MainTabNavigator from './app/components/Navigations/MainTabNavigator';
 import {DrawerContent} from './app/components/Navigations/DrawerContent';
@@ -29,7 +29,7 @@ const App = () => {
         <Drawer.Screen name="Signin" component={SigninPage} />
         <Drawer.Screen name="DashboardDrawer" component={MainTabNavigator} />
         <Drawer.Screen name="Lodge Complaint" component={ComplaintSubmission} />
-        <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+        <Drawer.Screen name="Profile" component={ProfileScreen} />
         <Drawer.Screen name=" My Purchase" component={MypurchaseSceen}/>
         <Drawer.Screen name="Sign Out" component={HomeScreen} />
         <Drawer.Screen name="Feedback" component={FeedbackScreen} />

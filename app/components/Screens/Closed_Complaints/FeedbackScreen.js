@@ -1,13 +1,54 @@
 import * as React from 'react';
-import {Button, View, Text, TouchableOpacity, Image,StyleSheet} from 'react-native';
-import {useState} from 'react';
-// const FeedbackScreen = ({route}) => {
-const FeedbackScreen = () => {
+import {Button, View, Text, TouchableOpacity, Image, StyleSheet, Alert} from 'react-native';
+import {useEffect, useState} from 'react';
+import AsyncStorage from '@react-native-community/async-storage';
+import {TextInput} from 'react-native-paper';
+
+const FeedbackScreen = ({route}) => {
+
 const [defaultRating, setdefaultRating] = useState(1)
 const [maxRating, setmaxRating] = useState([1,2,3,4,5])
-
+const [feedbackDescription, setfeedbackDescription] = useState('')
+const [token, setToken] = useState('');
+const complaintID = route.params.paramKey;
 const starImgCorner = 'https://raw.githubusercontent.com/tranhonghan/images/main/star_corner.png'
 const starImgFilled = 'https://raw.githubusercontent.com/tranhonghan/images/main/star_filled.png'
+console.log('***********'+ complaintID);
+
+
+    useEffect(() => {
+        saveToken();
+
+    }, []);
+
+
+    const saveToken = async () => {
+        const token = await AsyncStorage.getItem('userToken');
+        console.log('token from storage', token);
+        setToken(token);
+    }
+
+    const feedbackSubmission = () =>{
+
+        fetch("http://10.0.2.2:3000/customer/create-feedback", {
+
+            method: "post",
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authentication': `Bearer ${token}`
+            },
+            body:JSON.stringify( {
+                complaintID : complaintID,
+                feedback : feedbackDescription,
+                ratedValue : defaultRating
+
+            })
+
+        })
+
+    }
+
 
 const CustomerRatingBar =() => {
     return (
@@ -39,34 +80,31 @@ const CustomerRatingBar =() => {
 
 return (
     <View style={styles.container}>
+
         <Text style={styles.textStyle}>Please rate US!</Text>
         <CustomerRatingBar/>
         <Text style={styles.textStyle}>
             {defaultRating + ' / ' + maxRating.length}
         </Text>
+
+        <TextInput
+            style={styles.PIDstyle}
+            label="Description"
+            onChangeText = {(feedbackDescription) => setfeedbackDescription(feedbackDescription)}
+        />
+
         <TouchableOpacity
-        activeOpacity={0.7}
-        style={styles.buttonStyle}
-        onPress={() => alert(defaultRating)}
+            activeOpacity={0.7}
+            style={styles.buttonStyle}
+            onPress={() => feedbackSubmission()
+                }
         >
-            <Text>Get Selected value</Text>
+            <Text>Submit Feedback</Text>
 
         </TouchableOpacity>
     </View>
 );
 
-
-  // return (
-  //   <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-  //     <Text>This is Notification screen</Text>
-  //     {/*<Button onPress={() => navigation.goBack()} title="Go back home" />*/}
-  //
-  //       <Text >
-  //           Values passed from First page: {route.params.paramKey}
-  //       </Text>
-  //
-  //   </View>
-  // );
 };
 export default FeedbackScreen;
 const  styles = StyleSheet.create({
@@ -74,6 +112,11 @@ const  styles = StyleSheet.create({
         flex : 1,
         margin: 10,
         justifyContent : 'center'
+    },
+    PIDstyle: {
+        marginTop: 30,
+        marginLeft: 10,
+        marginRight: 10,
     },
     testStyle: {
         textAlign:'center',

@@ -3,50 +3,42 @@ import {Dimensions, StyleSheet, TouchableOpacity, View} from 'react-native';
 import { Text} from 'react-native-paper';
 import LinearGradient from "react-native-linear-gradient";
 import ProductButton from './ProductButton';
-
+import {Card} from 'react-native-shadow-cards';
 const ProductCard = ({item} )=> {
 
     return (
         <View>
-            <View style={ styles.cardView}>
+            <Card style={{padding: 10, margin: 10}}>
 
-                <Text style={styles.productName}> Product Name :{item.productName}</Text>
-                <Text style={styles.category}> Category :{item.category} </Text>
+                <Text style={styles.productName}> Product Name     :  <Text>{item.productName}</Text></Text>
+                <Text style={styles.category}> Category                   :   <Text>{item.category} </Text></Text>
+                <View style={{alignItems: 'center'}}>
                 <ProductButton />
+                </View>
+            </Card>
 
-            </View>
         </View>
     );
 };
 export default ProductCard;
 const { width } =Dimensions.get('screen');
 const styles =StyleSheet.create({
-    cardView :{
-        backgroundColor: '#a8b1ff',
-        margin : width * 0.03,
-        shadowColor : '#000000',
-        shadowOpacity: 0.5,
-        borderRadius: 40,
-        height: 150,
-        // height : 0.5,
-        // width: 0.5
 
-
-    },
 
     productName :{
         marginHorizontal:width * 0.05,
-        marginVertical: width * 0.03,
+        marginVertical: width * 0.008,
         color :'#000000',
-        fontSize: 20,
+        fontSize: 17,
         fontWeight:'bold'
     },
 
     category :{
         marginHorizontal:width * 0.05,
-        marginVertical: width * 0.03,
+        marginVertical: width * 0.008,
         color :'#000000',
-        fontSize: 15
+        fontSize: 15,
+        fontWeight:'bold'
     },
 
     signIn: {

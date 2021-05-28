@@ -22,7 +22,7 @@ const HomeScreen = ({navigation}) => {
         <Animatable.Image
           animation="bounceIn"
           duraton="1500"
-          source={require('../../assets/img/afisolve_logo.png')}
+          source={require('../../assets/img/logo1.png')}
           style={styles.logo}
           resizeMode="stretch"
         />
@@ -47,6 +47,7 @@ const HomeScreen = ({navigation}) => {
         <Text style={styles.text}>Sign in with account</Text>
         <View style={styles.button}>
           <TouchableOpacity onPress={() => navigation.navigate('Signin')}>
+
             <LinearGradient
               colors={['#730018', '#00085b']}
               style={styles.signIn}>
@@ -67,7 +68,8 @@ const height_logo = height * 0.28;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000e60',
+    backgroundColor: '#0c0837',
+
   },
   header: {
     flex: 2,
@@ -83,9 +85,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
   },
   logo: {
-    width: height_logo,
-    height: height_logo,
-    borderRadius: 150 / 3,
+    resizeMode: 'cover',
+    width: height * 0.2,
+    height: height * 0.2,
+    borderRadius: (height * 0.2)/2,
   },
   title: {
     color: '#000000',
@@ -102,7 +105,7 @@ const styles = StyleSheet.create({
   },
   signIn: {
     width: 150,
-    height: 40,
+    height: 80,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 50,

@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 
 import {
-  View,
-  Text,
-  TouchableOpacity,
-  TextInput,
-  StyleSheet,
-  StatusBar,
-  Dimensions, Alert,
+    View,
+    Text,
+    TouchableOpacity,
+    TextInput,
+    StyleSheet,
+    StatusBar,
+    Dimensions, Alert
 } from 'react-native';
 
 import {useTheme} from '@react-navigation/native';
@@ -17,11 +17,39 @@ import {login} from '../../services/authService';
 import AsyncStorage from '@react-native-community/async-storage';
 
 const SigninPage = ({navigation}) => {
+
+
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const {colors} = useTheme();
 
   const signIn =  () => {
+
+      const strongRegex = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$");
+
+      if (!strongRegex.test(email)) {
+          return(Alert.alert(
+              "Login Error! ",
+              "Please enter valid email address! ",
+              [{
+                  text: "OK",
+                  onPress : () => navigation.navigate("Signin" ),
+              }]
+          ))
+          // return false;
+      } else if (password.length > 4) {
+          return(Alert.alert(
+              "Login Error ",
+              "Invalid login, Your Username or Password  incorrect \nPlease try again ",
+              [{
+                  text: "OK",
+                  onPress : () => navigation.navigate("Signin" ),
+              }]
+          ))
+          // return false;
+      }
+
     login(email, password)
       .then((res) => {
 
@@ -41,7 +69,7 @@ const SigninPage = ({navigation}) => {
           console.log('User type not matched!');
           Alert.alert(
               "Login Error! ",
-              "Invalid login, Your Password or Username did not match! \nPlease try again ",
+              "Invalid login, Please try to login via www.Afisolve.lk \n Thank you! ",
               [{
                 text: "OK",
                 onPress : () => navigation.navigate("Signin" ),
@@ -52,26 +80,28 @@ const SigninPage = ({navigation}) => {
 
       })
       .catch(() => {
-        console.log('invalid login');
+
         Alert.alert(
             "Login Error! ",
-            "Invalid login, Your Password or Username did not match! \nPlease try again ",
+            "Invalid login, Your Password or Username did not match!!! \nPlease try again ",
             [{
               text: "OK",
-              onPress : () => navigation.navigate("Signin" ),
+
             }]
         )
+
       });
+
   };
 
   return (
-    <View style={{flex: 1, backgroundColor: '#000e60'}}>
-      <StatusBar backgroundColor="#009387" barStyle="light-content" />
+    <View style={{flex: 1, backgroundColor: '#0c0837'}}>
+      <StatusBar backgroundColor="#0c0837" barStyle="light-content" />
       <View style={styles.header}>
         <Animatable.Image
           animation="bounceIn"
           duraton="1500"
-          source={require('../../assets/img/afisolve_logo.png')}
+          source={require('../../assets/img/logo1.png')}
           style={styles.logo}
           resizeMode="stretch"
         />
@@ -88,8 +118,9 @@ const SigninPage = ({navigation}) => {
         <View style={styles.inputView}>
           <TextInput
             style={styles.TextInput}
-            placeholder="c@gmail.com"
+            placeholder="E-mail"
             placeholderTextColor="white"
+            value={email}
             onChangeText={(email) => setEmail(email)}
           />
         </View>
@@ -97,9 +128,11 @@ const SigninPage = ({navigation}) => {
         <View style={styles.inputView}>
           <TextInput
             style={styles.TextInput}
-            placeholder="123"
+            placeholder="Password"
             placeholderTextColor="white"
             secureTextEntry={true}
+            keyboardType="numeric"
+            value={password}
             onChangeText={(password) => setPassword(password)}
           />
         </View>
@@ -126,9 +159,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logo: {
-    width: height_logo,
-    height: height_logo,
-    borderRadius: 150 / 3,
+      resizeMode: 'cover',
+      width: height * 0.2,
+      height: height * 0.2,
+      borderRadius: (height * 0.2)/2,
   },
 
   footer: {
@@ -143,7 +177,8 @@ const styles = StyleSheet.create({
   },
   inputView: {
     backgroundColor: '#2937f6',
-
+      borderRadius: 50,
+      color :'#ffffff',
     width: '70%',
     height: 45,
     marginBottom: 20,

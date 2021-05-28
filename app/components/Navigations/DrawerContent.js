@@ -86,42 +86,21 @@ export function DrawerContent(props) {
                         {/*    onPress={() => {props.navigation.navigate('BookmarkScreen')}}*/}
                         {/*/>*/}
                         <DrawerItem
-                            // icon={({color, size}) => (
-                            //     <Icon
-                            //         name="settings-outline"
-                            //         color={color}
-                            //         size={size}
-                            //     />
-                            // )}
-                            label="Notification"
-                            onPress={() => {navigation.navigate('Notifications')}}
-                        />
-                        <DrawerItem
-                            // icon={({color, size}) => (
-                            //     <Icon
-                            //         name="account-check-outline"
-                            //         color={color}
-                            //         size={size}
-                            //     />
-                            // )}
-                            label="Lodge Complaint"
-                            onPress={() => {props.navigation.navigate('Lodge Complaint')}}
-                        />
 
-
+                            label="Profile"
+                            onPress={() => {props.navigation.navigate('Profile')}}
+                        />
 
                     <DrawerItem
                         label="Lodge Complaint"
                         onPress={() => {props.navigation.navigate('Lodge Complaint')}}
                     />
 
+                        <DrawerItem
 
-
-                <DrawerItem
-                    label="Feedback"
-                    onPress={() => {props.navigation.navigate('FeedBack')}}
-                />
-
+                            label="Profile"
+                            onPress={() => {props.navigation.navigate('Profile')}}
+                        />
 
             <DrawerItem
                 label="Sign Out"

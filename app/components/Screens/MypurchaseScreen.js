@@ -4,6 +4,9 @@ import {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 import ProductCard from './ProductCard';
 import {hostName} from '../../constants/constants';
+import {Text} from 'react-native-paper';
+import {Card} from 'react-native-shadow-cards';
+import ProductButton from './ProductButton';
 
 const MypurchaseSceen = () => {
   const [productDetails , setproductDetails] = useState([]);
@@ -47,28 +50,19 @@ const MypurchaseSceen = () => {
 
 
       </View>
+
+
+
+
   );
 };
 export default MypurchaseSceen;
-const styles =StyleSheet.create({
-
-
-  Button:{
-    backgroundColor: '#344569'
-  },
-
-  // signIn: {
-  //   width: 150,
-  //   height: 40,
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  //   borderRadius: 50,
-  //   flexDirection: 'row',
-  // },
-  // textSign: {
-  //   color: 'white',
-  //   fontWeight: 'bold',
-  // },
-
-
-});
+// const { width } =Dimensions.get('screen');
+// const styles =StyleSheet.create({
+//
+//
+//   Button:{
+//     backgroundColor: '#344569'
+//   },
+//
+// });

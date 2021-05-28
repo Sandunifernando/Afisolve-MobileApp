@@ -1,8 +1,12 @@
 import * as React from 'react';
-import {View, FlatList} from 'react-native';
+import {View, FlatList, TouchableOpacity, Alert, Dimensions, StyleSheet, Text} from 'react-native';
 import {useState,useEffect} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 import ClosedComplaintCard from './ClosedComplaintCard';
+
+import LinearGradient from "react-native-linear-gradient";
+import {Card} from 'react-native-shadow-cards';
+import Button from 'react-native-paper/src/components/Button';
 
 const ClosedComplaintScreen= () => {
     const [complaintDetails, setcomplaintDetails] = useState('');
@@ -41,9 +45,11 @@ const ClosedComplaintScreen= () => {
                           )
                       }} />
         </View>
+
+
+
+
     );
 };
 export default ClosedComplaintScreen;
-
-
 

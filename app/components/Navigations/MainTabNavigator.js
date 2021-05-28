@@ -8,9 +8,10 @@ import {createStackNavigator} from '@react-navigation/stack';
 import MypurchaseSceen from '../Screens/MypurchaseScreen';
 import ComplaintTrackSceen from '../Screens/ComplaintTrack';
 import ComplaintHistory from '../Screens/ComplaintScreen';
+import ProfileScreen from '../Screens/ProfileScreen';
 
 const DashboardStack = createStackNavigator();
-const ComplaintStack = createStackNavigator();
+const ProfileStack = createStackNavigator();
 const MypurchaseStack = createStackNavigator();
 const ComplaintTrackStack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
@@ -56,11 +57,11 @@ const MainTabNavigator = () => {
         name="Submit_Complaint"
         // name="SubmitComplaint" --- kalin thibba eka wenas karanna kalin
 
-        component={ComplaintStackScreen}
+        component={ProfileStackScreen}
         options={{
-          tabBarLabel: 'History',
+          tabBarLabel: 'Profile',
           tabBarIcon: ({color}) => (
-            <Icon name="hourglass-outline" color={color} size={26} />
+            <Icon name="person-outline" color={color} size={26} />
           ),
         }}
       />
@@ -155,8 +156,8 @@ const ComplaintTrackStackScreen = ({navigation}) => (
   </ComplaintTrackStack.Navigator>
 );
 
-const ComplaintStackScreen = ({navigation}) => (
-  <ComplaintStack.Navigator
+const ProfileStackScreen = ({navigation}) => (
+  <ProfileStack.Navigator
     screenOptions={{
       headerStyle: {
         backgroundColor: '#0c0837',
@@ -166,9 +167,9 @@ const ComplaintStackScreen = ({navigation}) => (
         fontWeight: 'bold',
       },
     }}>
-    <ComplaintStack.Screen
-      name="History" //complaint history view
-      component={ComplaintHistory}
+    <ProfileStack.Screen
+      name="Profile" //complaint history view
+      component={ProfileScreen}
       options={{
         headerLeft: () => (
           <Icon.Button
@@ -180,5 +181,5 @@ const ComplaintStackScreen = ({navigation}) => (
         ),
       }}
     />
-  </ComplaintStack.Navigator>
+  </ProfileStack.Navigator>
 );

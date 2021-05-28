@@ -1,62 +1,42 @@
 import * as React from 'react';
 import {Dimensions, StyleSheet, View} from 'react-native';
 import { Text} from 'react-native-paper';
+import {Card} from 'react-native-shadow-cards';
 
 const FinishedComplaintCard = ({item} )=> {
     return (
         <View>
-            <View style={ styles.cardView}>
+            <Card style={{padding: 10, margin: 10}}>
 
-                <Text style={styles.productName}> Complaint ID :{item.complaintID}</Text>
-                <Text style={styles.category}> Description :{item.description} </Text>
-                <Text style={styles.category}> Lodge Date :{item.submittedDate} </Text>
+                <Text style={styles.productName}> Your Complaint Refecrence No : <Text style={{fontWeight:"bold"}}>{item.complaintID}</Text> has been Closed!  </Text>
 
-            </View>
+                <Text style={styles.category}> Description          :   <Text style={{fontWeight:"bold"}}>{item.description} </Text></Text>
+                <Text style={styles.category}> Lodge Date          :   <Text style={{fontWeight:"bold"}}>{item.submittedDate} </Text></Text>
+                <Text style={styles.category}> Accepted Date    :   <Text style={{fontWeight:"bold"}}>{item.lastDateOfPending} </Text></Text>
+                <Text style={styles.category}> Completed Date :   <Text style={{fontWeight:"bold"}}>{item.finishedDate} </Text></Text>
+
+            </Card>
         </View>
     );
 };
 export default FinishedComplaintCard;
 const { width } =Dimensions.get('screen');
 const styles =StyleSheet.create({
-    cardView :{
-        backgroundColor: '#a8b1ff',
-        margin : width * 0.03,
-        shadowColor : '#000000',
-        shadowOpacity: 0.5,
-        borderRadius: 40,
-        height: 150,
-        // height : 0.5,
-        // width: 0.5
-
-
-    },
 
     productName :{
         marginHorizontal:width * 0.05,
-        marginVertical: width * 0.03,
+        marginVertical: width * 0.008,
         color :'#000000',
-        fontSize: 20,
-        fontWeight:'bold'
+        fontSize: 15,
+        fontStyle: 'italic'
     },
 
     category :{
         marginHorizontal:width * 0.05,
-        marginVertical: width * 0.03,
+        marginVertical: width * 0.008,
         color :'#000000',
-        fontSize: 15
-    },
-
-    signIn: {
-        width: 150,
-        height: 40,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 50,
-        flexDirection: 'row',
-    },
-    textSign: {
-        color: 'white',
-        fontWeight: 'bold',
+        fontSize: 15,
+        fontWeight:'bold'
     },
 
 

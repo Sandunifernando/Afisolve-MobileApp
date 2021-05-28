@@ -51,11 +51,11 @@ const DashboardPage = ({navigation}) => {
           {/*</Button>*/}
         </Card>
         <Card style={styles.maincard}>
-          <Text style={styles.cardtitle}> History </Text>
+          <Text style={styles.cardtitle}> Profile </Text>
           <Button
             mode="contained"
-            onPress={() => navigation.navigate('Complaint Track')}>
-            View History
+            onPress={() => navigation.navigate('Profile')}>
+            View Profile
           </Button>
         </Card>
       </View>

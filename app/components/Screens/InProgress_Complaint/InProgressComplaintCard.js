@@ -2,29 +2,41 @@ import * as React from 'react';
 import {Dimensions, StyleSheet, TouchableOpacity, View} from 'react-native';
 import { Text} from 'react-native-paper';
 import LinearGradient from "react-native-linear-gradient";
+import CommentScreen from './CommentScreen';
+import {useNavigation} from '@react-navigation/core';
+import {createStackNavigator} from '@react-navigation/stack';
+import Icon from 'react-native-vector-icons/Ionicons';
+import InProgressComplaintScreen from './InProgressComplaintScreen';
+import Button from 'react-native-paper/src/components/Button';
+import {Card} from 'react-native-shadow-cards';
+
+
 
 const InProgressComplaintCard = ({item} )=> {
+    const navigation = useNavigation();
     return (
         <View>
-            <View style={ styles.cardView}>
-                <View style={{ flexDirection:'row', paddingTop:10}}>
-                    <Text style={styles.productName}> Complaint ID :{item.complaintID}</Text>
-                    <TouchableOpacity  >
-                        <LinearGradient
-                            colors={['#3263f8', '#00055b']}
-                            style={styles.signIn}>
-                            <Text style={styles.textSign}>Add Comment </Text>
-                        </LinearGradient>
-                    </TouchableOpacity>
-                </View>
-                <Text style={styles.category}> Description :{item.description} </Text>
-                <Text style={styles.category}> Lodge Date :{item.submittedDate} </Text>
-                <Text style={styles.category}> Accepted Date :{item. lastDateOfPending} </Text>
-            </View>
+            <Card style={{padding: 10, margin: 10}}>
+                <Text style={styles.productName}> Your Complaint Refecrence No : <Text style={{fontWeight:"bold"}}>{item.complaintID}</Text> has been processing! </Text>
+                <Text style={styles.category}> Description          :   <Text style={{fontWeight:"normal"}}>{item.description} </Text></Text>
+                <Text style={styles.category}> Lodge Date          :   <Text style={{fontWeight:"normal"}}>{item.submittedDate} </Text></Text>
+                <Text style={styles.category}> Accepted Date    :   <Text style={{fontWeight:"normal"}}>{item.lastDateOfPending} </Text></Text>
+                <Button mode="contained" color='#1a2175'
+                        style={{width:180}}
+                        onPress={() => navigation.navigate('Comment')}>
+                    Add Comment
+                </Button>
+            </Card>
         </View>
     );
 };
 export default InProgressComplaintCard;
+
+
+
+
+
+
 const { width } =Dimensions.get('screen');
 const styles =StyleSheet.create({
     cardView :{
@@ -42,30 +54,18 @@ const styles =StyleSheet.create({
 
     productName :{
         marginHorizontal:width * 0.05,
-        marginVertical: width * 0.03,
+        marginVertical: width * 0.008,
         color :'#000000',
-        fontSize: 20,
-        fontWeight:'bold'
+        fontSize: 15,
+        fontStyle: 'italic'
     },
 
     category :{
         marginHorizontal:width * 0.05,
-        marginVertical: width * 0.03,
+        marginVertical: width * 0.008,
         color :'#000000',
-        fontSize: 15
-    },
-
-    signIn: {
-        width: 150,
-        height: 40,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 50,
-        flexDirection: 'row',
-    },
-    textSign: {
-        color: 'white',
-        fontWeight: 'bold',
+        fontSize: 15,
+        fontWeight:'bold'
     },
 
 

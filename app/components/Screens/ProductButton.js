@@ -3,6 +3,7 @@ import { StyleSheet, TouchableOpacity, View} from 'react-native';
 import { Text} from 'react-native-paper';
 import LinearGradient from "react-native-linear-gradient";
 import {useNavigation} from '@react-navigation/core';
+import Button from 'react-native-paper/src/components/Button';
 
 const ProductButton = () => {
     const navigation = useNavigation();
@@ -11,13 +12,11 @@ const ProductButton = () => {
         <View>
 
 
-                <TouchableOpacity  onPress={() => navigation.navigate('Lodge Complaint')}>
-                    <LinearGradient
-                        colors={['#3263f8', '#00055b']}
-                        style={styles.signIn}>
-                        <Text style={styles.textSign}>Report </Text>
-                    </LinearGradient>
-                </TouchableOpacity>
+                <Button
+                    mode="contained" color='#1a2175' style={{width:120}}
+                    onPress={() => navigation.navigate('Lodge Complaint')}>
+                    Report
+                </Button>
 
 
         </View>
@@ -25,23 +24,3 @@ const ProductButton = () => {
 };
 export default ProductButton;
 
-const styles =StyleSheet.create({
-
-
-    signIn: {
-        width: 150,
-        height: 40,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 50,
-        flexDirection: 'row',
-        marginBottom:10,
-        marginLeft:200,
-    },
-    textSign: {
-        color: 'white',
-        fontWeight: 'bold',
-    },
-
-
-});
