@@ -99,7 +99,7 @@ return (
             onPress={() => feedbackSubmission()
                 }
         >
-            <Text>Submit Feedback</Text>
+            <Text style={{color: 'white', justifyContent:'center',alignItems:'center'}}>Submit Feedback</Text>
 
         </TouchableOpacity>
     </View>
@@ -137,6 +137,7 @@ const  styles = StyleSheet.create({
         justifyContent: 'center',
         alignContent: 'center',
         marginTop: 30,
+        marginHorizontal:20,
         padding:15,
         backgroundColor:'green'
     }

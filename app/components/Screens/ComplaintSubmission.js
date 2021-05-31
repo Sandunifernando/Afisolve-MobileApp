@@ -1,11 +1,13 @@
 import * as React from 'react';
-import {Button, View, Text, ScrollView, StyleSheet, Alert, TouchableOpacity} from 'react-native';
+import { View, Text, ScrollView, StyleSheet, Alert, TouchableOpacity} from 'react-native';
 import {Appbar} from 'react-native-paper';
 import {TextInput, HelperText} from 'react-native-paper';
 import {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 import ProductPicker from './ProductPicker';
 import LinearGradient from "react-native-linear-gradient";
+import Button from 'react-native-paper/src/components/Button';
+
 
 
 const ComplaintSubmission = ({navigation}) => {
@@ -60,7 +62,7 @@ const ComplaintSubmission = ({navigation}) => {
 
   return (
     <ScrollView>
-      <Appbar.Header>
+      <Appbar.Header style={{backgroundColor:'#1a2175'}}>
         <Appbar.BackAction onPress={() => navigation.goBack()} />
         <Appbar.Content title="Lodge Complaint" />
 
@@ -87,13 +89,12 @@ const ComplaintSubmission = ({navigation}) => {
 
         {/*<Button style={styles.lodgeButton}  onPress={() => {send(); openAlert();}} title="Submit Complaint" />*/}
 
-          <TouchableOpacity  onPress={() => {send(); openAlert();}}>
-              <LinearGradient
-                  colors={['#3263f8', '#00055b']}
-                  style={styles.signIn}>
-                  <Text style={styles.textSign}>Lodge Complaint </Text>
-              </LinearGradient>
-          </TouchableOpacity>
+          <Button
+           mode="contained" color='#1a2175'
+           style={{marginTop:30, marginBottom:30}}
+           onPress={() => {send(); openAlert();}}>
+             Lodge Complaint
+          </Button>
 
       </View>
     </ScrollView>

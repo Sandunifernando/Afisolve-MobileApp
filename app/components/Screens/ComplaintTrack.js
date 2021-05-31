@@ -18,10 +18,16 @@ const Tab = createMaterialTopTabNavigator();
 const ComplaintTrackSceen  = () => {
     return (
 
-        <Tab.Navigator>
+        <Tab.Navigator  tabBarOptions={{
+                           labelStyle: { textTransform: "none", },
+                             style: {
+                               fontSize: 10,
+                               fontWeight:'bold'
+                             },
+                       }}>
             <Tab.Screen name="Pending" component={PendingComplaintScreen}/>
-            <Tab.Screen name="In-Progress " component={ InProgressComplaintStackScreen}/>
-            <Tab.Screen name="Closed " component={ColosedComplaintStackScreen }/>
+            <Tab.Screen name="Progress " component={ InProgressComplaintStackScreen}/>
+            <Tab.Screen name="Completed " component={ColosedComplaintStackScreen }/>
             <Tab.Screen name="Finished " component={FinishedComplaintScreen}/>
         </Tab.Navigator>
 

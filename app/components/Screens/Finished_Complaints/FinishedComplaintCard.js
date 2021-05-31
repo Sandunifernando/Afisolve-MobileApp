@@ -10,10 +10,10 @@ const FinishedComplaintCard = ({item} )=> {
 
                 <Text style={styles.productName}> Your Complaint Refecrence No : <Text style={{fontWeight:"bold"}}>{item.complaintID}</Text> has been Closed!  </Text>
 
-                <Text style={styles.category}> Description          :   <Text style={{fontWeight:"bold"}}>{item.description} </Text></Text>
-                <Text style={styles.category}> Lodge Date          :   <Text style={{fontWeight:"bold"}}>{item.submittedDate} </Text></Text>
-                <Text style={styles.category}> Accepted Date    :   <Text style={{fontWeight:"bold"}}>{item.lastDateOfPending} </Text></Text>
-                <Text style={styles.category}> Completed Date :   <Text style={{fontWeight:"bold"}}>{item.finishedDate} </Text></Text>
+                <Text style={styles.category}> Description          :   <Text style={{fontWeight:"normal"}}>{item.description} </Text></Text>
+                <Text style={styles.category}> Lodge Date          :   <Text style={{fontWeight:"normal"}}>{item.submittedDate} </Text></Text>
+                <Text style={styles.category}> Accepted Date    :   <Text style={{fontWeight:"normal"}}>{item.lastDateOfPending} </Text></Text>
+                <Text style={styles.category}> Completed Date :   <Text style={{fontWeight:"normal"}}>{item.finishedDate} </Text></Text>
 
             </Card>
         </View>

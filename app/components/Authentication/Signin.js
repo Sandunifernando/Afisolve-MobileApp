@@ -38,7 +38,7 @@ const SigninPage = ({navigation}) => {
               }]
           ))
           // return false;
-      } else if (password.length > 4) {
+      } else if (password.length > 25) {
           return(Alert.alert(
               "Login Error ",
               "Invalid login, Your Username or Password  incorrect \nPlease try again ",

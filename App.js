@@ -16,6 +16,7 @@ import ComplaintSubmission from './app/components/Screens/ComplaintSubmission';
 import MainTabNavigator from './app/components/Navigations/MainTabNavigator';
 import {DrawerContent} from './app/components/Navigations/DrawerContent';
 import MypurchaseSceen from './app/components/Screens/MypurchaseScreen';
+import NotificationScreen from './app/components/Screens/NotificationScreen';
 import FeedbackScreen from './app/components/Screens/Closed_Complaints/FeedbackScreen';
 
 const Drawer = createDrawerNavigator();
@@ -32,6 +33,9 @@ const App = () => {
         <Drawer.Screen name="Profile" component={ProfileScreen} />
         <Drawer.Screen name=" My Purchase" component={MypurchaseSceen}/>
         <Drawer.Screen name="Sign Out" component={HomeScreen} />
+                <Drawer.Screen name="Notification" component={NotificationScreen} />
+
+
         <Drawer.Screen name="Feedback" component={FeedbackScreen} />
       </Drawer.Navigator>
     </NavigationContainer>

@@ -8,8 +8,8 @@ const PendingComplaintCard = ({item} )=> {
         <View>
             <Card style={{padding: 10, margin: 10}}>
                 <Text style={styles.productName}> Your Complaint Refecrence No : <Text style={{fontWeight:"bold"}}>{item.complaintID}</Text> will be get into process as soon as possible!  </Text>
-                <Text style={styles.category}> Description          :   <Text style={{fontWeight:"bold"}}>{item.description} </Text></Text>
-                <Text style={styles.category}> Lodge Date          :   <Text style={{fontWeight:"bold"}}>{item.submittedDate} </Text></Text>
+                <Text style={styles.category}> Description          :   <Text style={{fontWeight:"normal"}}>{item.description} </Text></Text>
+                <Text style={styles.category}> Lodge Date          :   <Text style={{fontWeight:"normal"}}>{item.submittedDate} </Text></Text>
             </Card>
         </View>
     );

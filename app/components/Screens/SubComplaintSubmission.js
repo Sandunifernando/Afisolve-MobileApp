@@ -1,11 +1,12 @@
 import * as React from 'react';
-import {Button, View, Text, ScrollView, StyleSheet, Alert} from 'react-native';
+import { View, Text, ScrollView, StyleSheet, Alert} from 'react-native';
 import {Appbar} from 'react-native-paper';
 import {TextInput, HelperText} from 'react-native-paper';
 import {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 import ProductPicker from './ProductPicker';
 import {useNavigation} from '@react-navigation/core';
+import Button from 'react-native-paper/src/components/Button';
 
 const SubComplaintSubmission = ({route}) => {
     const navigation = useNavigation();
@@ -48,7 +49,7 @@ const SubComplaintSubmission = ({route}) => {
 
     const openAlert = () => {
         Alert.alert(
-            "Complaint Successfully Submitted",
+            "Sub-Complaint Successfully Submitted",
             "We review it as soon as possible. Thank you for reaching for us!",
             [{
                 text: "OK",
@@ -59,34 +60,29 @@ const SubComplaintSubmission = ({route}) => {
 
     return (
         <ScrollView>
-            {/*<Appbar.Header>*/}
-            {/*    <Appbar.BackAction onPress={() => navigation.goBack()} />*/}
-            {/*    <Appbar.Content title="Submit Complaint" />*/}
-            {/*    <Appbar.Action icon="magnify" onPress={() => navigation.openDrawer()} />*/}
-            {/*</Appbar.Header>*/}
 
-            <Text>Please submit your issue still facing!</Text>
 
-            {/*<View>*/}
-            {/*    /!*Firstly set the initial states in the Product picker and send them to child component to update as a props*!/*/}
-            {/*    <ProductPicker productID={productID} setproductID={setproductID} />*/}
+            <Text style={styles.Firstline}>Please submit your issue still facing!</Text>
 
-            {/*    <HelperText type="info">*/}
-            {/*        Make sure select the correct Product*/}
-            {/*    </HelperText>*/}
-            {/*</View>*/}
+
 
             <TextInput
                 style={styles.PIDstyle}
                 label="Description"
-
-
+                multiline={true}
                 onChangeText = {(description) => setdescription(description)}
             />
-
             <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-                <Text>This is submittion</Text>
-                <Button onPress={() => {send(); openAlert();}} title="Lodge Sub-Complaint" />
+
+                {/*<Button style={styles.lodgeButton}  onPress={() => {send(); openAlert();}} title="Submit Complaint" />*/}
+
+                <Button
+                    mode="contained" color='#1a2175'
+                    style={{marginTop:30, marginBottom:30}}
+                    onPress={() => {send(); openAlert();}}>
+                    Lodge Sub-Complaint
+                </Button>
+
             </View>
         </ScrollView>
     );
@@ -95,7 +91,15 @@ export default SubComplaintSubmission;
 const styles = StyleSheet.create({
     PIDstyle: {
         marginTop: 30,
-        marginLeft: 10,
-        marginRight: 10,
+        marginLeft: 20,
+        marginRight: 20,
+        height : 200,
+    },
+    Firstline:{
+        marginLeft: 25,
+        marginTop: 15,
+        fontSize: 15,
+        fontWeight: 'bold',
+        fontFamily: 'Cochin'
     },
 });

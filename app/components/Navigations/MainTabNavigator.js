@@ -32,7 +32,7 @@ const MainTabNavigator = () => {
       />
 
       <Tab.Screen
-        name="MyPurchase"
+        name="My Purchase"
         component={MypurchaseStackScreen}
         options={{
           tabBarLabel: 'Purchase',
@@ -94,6 +94,14 @@ const DashboardStackScreen = ({navigation}) => (
             onPress={() => navigation.openDrawer()}
           />
         ),
+        headerRight: () => (
+                  <Icon.Button
+                    name="notifications-sharp"
+                    size={25}
+                    backgroundColor="#0c0837"
+                    onPress={() => navigation.navigate('Notification')}
+                  />
+                ),
       }}
     />
   </DashboardStack.Navigator>
@@ -140,7 +148,7 @@ const ComplaintTrackStackScreen = ({navigation}) => (
       },
     }}>
     <ComplaintTrackStack.Screen
-      name="ComplaintTrack"
+      name="Complaint Track"
       component={ComplaintTrackSceen}
       options={{
         headerLeft: () => (

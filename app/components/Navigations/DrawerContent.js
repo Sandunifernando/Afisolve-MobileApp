@@ -28,14 +28,12 @@ export function DrawerContent(props) {
                     <View style={styles.userInfoSection}>
                         <View style={{flexDirection:'row',marginTop: 15}}>
                             <Avatar.Image
-                                source={{
-                                    uri: 'https://api.adorable.io/avatars/50/abott@adorable.png'
-                                }}
-                                size={50}
+                               source={require('../../assets/img/profile-1.jpg')}
+                                size={60}
                             />
                             <View style={{marginLeft:15, flexDirection:'column'}}>
-                                <Title style={styles.title}>John Doe</Title>
-                                <Caption style={styles.caption}>@j_doe</Caption>
+                                <Title style={styles.title}>Hiruni Fernando</Title>
+                                <Caption style={styles.caption}>vdsanduni@gmail.com</Caption>
                             </View>
                         </View>
 
@@ -61,7 +59,7 @@ export function DrawerContent(props) {
                             //     />
                             // )}
                             label="Home"
-                            onPress={() => {props.navigation.navigate('Home')}}
+                            onPress={() => {props.navigation.navigate('DashboardDrawer')}}
                         />
                         <DrawerItem
                             // icon={({color, size}) => (
@@ -149,7 +147,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     caption: {
-        fontSize: 14,
+        fontSize: 10,
         lineHeight: 14,
     },
     row: {
