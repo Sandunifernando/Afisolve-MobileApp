@@ -47,6 +47,11 @@ const HomeScreen = ({navigation}) => {
         <Text style={styles.text}>Sign in with account</Text>
         <View style={styles.button}>
           <TouchableOpacity onPress={() => navigation.navigate('Signin')}>
+            // add create submission button 
+            <Text style={styles.text}>create submissiont</Text>
+        <View style={styles.button}>
+          <TouchableOpacity onPress={() => navigation.navigate('submission')}>
+
 
             <LinearGradient
               colors={['#730018', '#00085b']}
