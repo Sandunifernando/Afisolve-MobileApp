@@ -58,6 +58,17 @@ const DashboardPage = ({navigation}) => {
             View Profile
           </Button>
         </Card>
+// --------------contribution rating
+
+
+       <Card style={styles.maincard}>
+          <Text style={styles.cardtitle}> Profile </Text>
+          <Button
+            mode="contained"
+            onPress={() => navigation.navigate('Rate')}>
+           Rate profile
+          </Button>
+        </Card>
       </View>
     </ScrollView>
   );
