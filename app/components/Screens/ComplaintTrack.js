@@ -33,7 +33,23 @@ const ComplaintTrackSceen  = () => {
 
     );
 };
+//------------------------------------------------------track function 
+const ComplaintLatencyTrack  = () => {
+    return (
 
+        <Tab.Navigator  tabBarOptions={{
+                           labelStyle: { textTransform: "none", },
+                             style: {
+                               fontSize: 10,
+                               fontWeight:'bold'
+                             },
+                       }}>
+            <Tab.Screen name="rating" component={RatingComplaintScreen}/>
+           
+        </Tab.Navigator>
+
+    );
+}
 export default ComplaintTrackSceen ;
 
 //-----------------------------------------------------------
