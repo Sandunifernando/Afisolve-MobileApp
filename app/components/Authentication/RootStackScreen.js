@@ -8,6 +8,9 @@ const RootStackScreen = ({navigation}) => {
   <RootStack.Navigator headerMode="none">
     <RootStack.Screen name="Home" component={HomeScreen} />
     <RootStack.Screen name="Signin" component={SigninPage} />
+//------------- contribution
+    <RootStack.Screen name="" component={ComplaintScreen} />
+    <RootStack.Screen name="Signin" component={SignoutPage} />
   </RootStack.Navigator>;
 };
 
