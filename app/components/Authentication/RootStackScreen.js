@@ -13,5 +13,10 @@ const RootStackScreen = ({navigation}) => {
     <RootStack.Screen name="Signin" component={SignoutPage} />
   </RootStack.Navigator>;
 };
+const RootStackScreen = ({navigation}) => {
+  <RootStack.Navigator headerMode="none">
+    <RootStack.Screen name="Rate" component={RateScreen} />
+    <RootStack.Screen name="Signin" component={ComplaintPage} />
+};
 
 export default RootStackScreen;
