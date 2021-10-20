@@ -27,6 +27,18 @@ const InProgressComplaintCard = ({item} )=> {
                     Add Comment
                 </Button>
             </Card>
+//----------------contribution
+<Card style={{padding: 10, margin: 10}}>
+                <Text style={styles.Rate}> Your Complaint Refecrence No : <Text style={{fontWeight:"bold"}}>{item.complaintID}</Text> has been processing! </Text>
+                <Text style={styles.category}> Description          :   <Text style={{fontWeight:"normal"}}>{item.description} </Text></Text>
+                <Text style={styles.category}> Complaint Ref:   :   <Text style={{fontWeight:"normal"}}>{item.ComplaintNo} </Text></Text>
+                <Button mode="contained" color='#1a2175'
+                        style={{width:180}}
+                        onPress={() => navigation.navigate('Comment')}>
+                    Add Comment
+                </Button>
+            </Card>
+//----------------------------------
         </View>
     );
 };
