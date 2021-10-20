@@ -85,6 +85,21 @@ const ComplaintSubmission = ({navigation}) => {
         multiline={true}
         onChangeText = {(description) => setdescription(description)}
       />
+//--------------contribution end
+<TextInput
+        style={styles.ComplaintScreen}
+        label="Rate Description"
+        multiline={true}
+        onChangeText = {(description) => RateScreen(description)}
+      />
+
+<TextInput
+        style={styles.}
+        label="Star Rate"
+        multiline={true}
+        onChangeText = {(description) => setrate(NoOfStar)}
+      />
+//--------------contribution end
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
 
         {/*<Button style={styles.lodgeButton}  onPress={() => {send(); openAlert();}} title="Submit Complaint" />*/}
