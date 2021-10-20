@@ -9,6 +9,8 @@ import MypurchaseSceen from '../Screens/MypurchaseScreen';
 import ComplaintTrackSceen from '../Screens/ComplaintTrack';
 import ComplaintHistory from '../Screens/ComplaintScreen';
 import ProfileScreen from '../Screens/ProfileScreen';
+//---------contribution
+import RateScreen from '../Screens/RateScreen';
 
 const DashboardStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
@@ -190,4 +192,21 @@ const ProfileStackScreen = ({navigation}) => (
       }}
     />
   </ProfileStack.Navigator>
+
+//-------------contribution
+<RateStack.Screen
+      name="Profile" //complaint rate view
+      component={RateScreen}
+      options={{
+        headerLeft: () => (
+          <Icon.Button
+            name="rate"
+            size={25}
+            backgroundColor="#0c0837"
+            onPress={() => navigation.RateScreen()}
+          />
+        ),
+      }}
+    />
+  </RateStack.Navigator>
 );
